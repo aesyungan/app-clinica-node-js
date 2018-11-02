@@ -1,6 +1,6 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Rol = sequelize.define('rol', {
+    const Diagnostico = sequelize.define('diagnostico', {
         id: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
         },
@@ -8,8 +8,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         descripcion: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT
         }
     });
-    return Rol;
+    return Diagnostico;
 }

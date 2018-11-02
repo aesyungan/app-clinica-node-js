@@ -1,15 +1,18 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Rol = sequelize.define('rol', {
+    const DiseñoFactura = sequelize.define('diseño_factura', {
         id: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
         },
-        nombre: {
+        cedula: {
             type: Sequelize.STRING
         },
-        descripcion: {
+        ruc: {
             type: Sequelize.STRING
+        },
+        obligado_contabilidad: {
+            type: Sequelize.BOOLEAN
         }
     });
-    return Rol;
+    return DiseñoFactura;
 }

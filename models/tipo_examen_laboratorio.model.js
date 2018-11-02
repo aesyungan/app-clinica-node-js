@@ -1,6 +1,6 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Rol = sequelize.define('rol', {
+    const TipoExamenLaboratorio = sequelize.define('tipo_examen_laboratorio', {
         id: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
         },
@@ -11,5 +11,5 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         }
     });
-    return Rol;
+    return TipoExamenLaboratorio;
 }

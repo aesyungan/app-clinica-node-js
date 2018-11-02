@@ -1,24 +1,20 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Consulta = sequelize.define('consultas', {
+    const RevisionActualAparatosSistemas = sequelize.define('revision_actual_aparatos_sistemas', {
         id: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
         },
-        motivo: {
+        nombre: {
             type: Sequelize.STRING,
             allowNull: true,
         },
-        emfermedad_actual: {
+        descripcion: {
             type: Sequelize.STRING,
             allowNull: true,
         },
-        tratamiento_inicial: {
-            type: Sequelize.STRING,
-            allowNull: true,
-        },
-        fecha_consulta: {
-            type: Sequelize.DATE
+        tipo: {
+            type: Sequelize.INTEGER//1 aparato 2 /sistemas
         }
     });
-    return Consulta;
+    return RevisionActualAparatosSistemas;
 }

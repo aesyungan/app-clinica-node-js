@@ -1,15 +1,15 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Rol = sequelize.define('rol', {
+    const Iva = sequelize.define('iva', {
         id: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
         },
-        nombre: {
-            type: Sequelize.STRING
+        porcentaje: {
+            type: Sequelize.FLOAT
         },
-        descripcion: {
-            type: Sequelize.STRING
+        estado: {
+            type: Sequelize.BOOLEAN
         }
     });
-    return Rol;
+    return Iva;
 }
