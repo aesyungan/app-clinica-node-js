@@ -43,4 +43,23 @@ db.Rol = require('./rol.model')(sequelize, Sequelize);
 db.Usuario = require('./usuario.model')(sequelize, Sequelize);
 //relaciones de n to 1
 db.Usuario.belongsTo(db.Rol);
+db.Paciente = require('./paciente.model')(sequelize, Sequelize);
+db.Consulta = require('./consulta.model')(sequelize, Sequelize);
+db.Consulta.belongsTo(db.Paciente);
+db.Consulta.belongsTo(db.Usuario);
+
+db.ListadoAntecedente = require('./listado_antecedente.model')(sequelize, Sequelize);
+db.AntecedentesPersonales = require('./antecedentes_personales.model')(sequelize, Sequelize);
+db.AntecedentesPersonales.belongsTo(db.Paciente, {
+  foreignKey: {
+    primaryKey: true,
+    allowNull: false
+  }
+});
+db.AntecedentesPersonales.belongsTo(db.Paciente, {
+  foreignKey: {
+    primaryKey: true,
+    allowNull: false
+  }
+});
 module.exports = db;

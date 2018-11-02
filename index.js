@@ -157,7 +157,7 @@ app.get('/rolPage/:page/:size', (req, res) => {
 //elimina la base y cre
 // db.sequelize.sync({ force: true }).then(() => {
 //si existe la tabla ya no crea
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ force: true }).then(() => {
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}!`);
     });

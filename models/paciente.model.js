@@ -1,14 +1,8 @@
 'use strict'
 module.exports = (sequelize, Sequelize) => {
-    const Usuario = sequelize.define('usuario', {
-        id_usuario: {
+    const Paciente = sequelize.define('paciente', {
+        id_paciente: {
             type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true
-        },
-        username: {
-            type: Sequelize.STRING
-        },
-        password: {
-            type: Sequelize.STRING
         },
         nombres: {
             type: Sequelize.STRING
@@ -21,7 +15,19 @@ module.exports = (sequelize, Sequelize) => {
         },
         correo: {
             type: Sequelize.STRING
-        }
+        },
+        fecha_facimiento: {
+            type: Sequelize.DATE
+        },
+        edad: {
+            type: Sequelize.STRING
+        },
+        ocupacion: {
+            type: Sequelize.INTEGER
+        },
+        direccion: {
+            type: Sequelize.STRING
+        },
     });
-    return Usuario;
+    return Paciente;
 }
