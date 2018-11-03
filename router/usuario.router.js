@@ -34,7 +34,7 @@ router.get('/logear/:username/:password', (req, res) => {
         if (data != null) {
             res.status(HttpStatus.ok).send(new ResponseData(true, sms.Authentication, sms.detailsAuthentication, data));
         } else {
-            res.status(HttpStatus.badRequest).send(new ResponseData(true,sms.Authentication, sms.detailsAuthenticationError, data));
+            res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Authentication, sms.detailsAuthenticationError, data));
         }
 
     }).catch(error => {
