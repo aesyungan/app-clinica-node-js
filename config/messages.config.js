@@ -11,6 +11,7 @@ const message = {
     detailsList: 'Se listo correctamente',
     detailsSearch:'Se busco correctamente',
     detailsAuthentication:'Se autentico correctamente',
+    detailsAuthenticationNoActive:'Usuario no activo',
     detailsAuthenticationError:'Error de usuario o contraseña'
 
 }

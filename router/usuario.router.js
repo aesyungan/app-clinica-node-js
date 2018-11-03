@@ -32,7 +32,11 @@ router.get('/logear/:username/:password', (req, res) => {
     }).then(data => {
 
         if (data != null) {
-            res.status(HttpStatus.ok).send(new ResponseData(true, sms.Authentication, sms.detailsAuthentication, data));
+            if (data.estado != null && data.estado == true) {
+                res.status(HttpStatus.ok).send(new ResponseData(true, sms.Authentication, sms.detailsAuthentication, data));
+            } else {
+                res.status(HttpStatus.ok).send(new ResponseData(false, sms.Authentication, sms.detailsAuthenticationNoActive, data));
+            }
         } else {
             res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Authentication, sms.detailsAuthenticationError, data));
         }
