@@ -23,30 +23,6 @@ router.get('/:id', (req, res) => {
         res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Search, error, null));
     });
 });
-//logear
-router.get('/logear/:username/:password', (req, res) => {
-    let password = sha3(req.params.password);
-    db.Usuario.findOne({
-        where: {
-            username: req.params.username,
-            password: password
-        }
-    }).then(data => {
-
-        if (data != null) {
-            if (data.estado != null && data.estado == true) {
-                res.status(HttpStatus.ok).send(new ResponseData(true, sms.Authentication, sms.detailsAuthentication, data));
-            } else {
-                res.status(HttpStatus.ok).send(new ResponseData(false, sms.Authentication, sms.detailsAuthenticationNoActive, data));
-            }
-        } else {
-            res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Authentication, sms.detailsAuthenticationError, data));
-        }
-
-    }).catch(error => {
-        res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.List, error, null));
-    });
-});
 //crear
 router.post('/', (req, res) => {
     // console.log("test->");
