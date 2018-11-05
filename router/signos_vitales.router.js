@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 //optener ID
 router.get('/:id', (req, res) => {
-    db.SignosVitales.findById(
+    db.SignosVitales.findByPk(
         req.params.id
     ).then(data => {
         res.status(HttpStatus.ok).send(new ResponseData(true, sms.Search, sms.detailsSearch, data));
