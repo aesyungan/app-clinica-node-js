@@ -38,7 +38,11 @@ router.put('/', (req, res) => {
     // console.log(req.body);
     db.Rol.update(req.body, { where: { id: req.body.id } })
         .then(data => {
-            res.status(HttpStatus.ok).send(new ResponseData(true, sms.Update, sms.detailsUpdate, data));
+            if (data[0] == 1) {
+                res.status(HttpStatus.ok).send(new ResponseData(true, sms.Update, sms.detailsUpdate, data[0]));
+            } else {
+                res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Update, sms.detailsUpdateError, data[0]));
+            }
         }).catch(error => {
             res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Update, error, null));
         });

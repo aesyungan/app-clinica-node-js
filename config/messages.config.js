@@ -8,6 +8,7 @@ const message = {
     Search: 'busqueda',
     detailsInsert: 'Se inserto correctamente',
     detailsUpdate: 'Se actualizo corectamente',
+    detailsUpdateError: 'Error no se actualizo',
     detailsDelete: 'Se elimino correctamente',
     detailsList: 'Se listo correctamente',
     detailsSearch: 'Se busco correctamente',

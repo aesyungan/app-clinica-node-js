@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // console.log("test->");
     // console.log(req.body);
-    req.params.password = sha3(req.params.password);
+    req.body.password = sha3(req.body.password);
     db.Usuario.create(req.body).then(data => {
         res.status(HttpStatus.ok).send(new ResponseData(true, sms.Insert, sms.detailsInsert, data));
     }).catch(error => {
@@ -38,10 +38,14 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
     // console.log("test->");
     // console.log(req.body);
-    req.params.password = sha3(req.params.password);
+    req.body.password = sha3(req.body.password);
     db.Usuario.update(req.body, { where: { id: req.body.id } })
         .then(data => {
-            res.status(HttpStatus.ok).send(new ResponseData(true, sms.Update, sms.detailsUpdate, data));
+            if (data[0] == 1) {
+                res.status(HttpStatus.ok).send(new ResponseData(true, sms.Update, sms.detailsUpdate, data[0]));
+            } else {
+                res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Update, sms.detailsUpdateError, data[0]));
+            }
         }).catch(error => {
             res.status(HttpStatus.badRequest).send(new ResponseData(false, sms.Update, error, null));
         });
